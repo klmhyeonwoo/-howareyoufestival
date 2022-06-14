@@ -1,0 +1,14 @@
+ <h1>글 수정하기</h1>
+<form action="/post/update/<%=@post.id%>" method="post">
+ <%= hidden_field_tag :authenticity_token, form_authenticity_token %> <!-- 인증토큰 -->
+  제목 : <input type="text" name="title" value="<%=@post.title%>"><br />
+  서브 타이틀 : <input type="text" name="sub_title" value="<%=@post.sub_title%>"><br />
+  내용 : <textarea name="post_content" rows="8" cols="80"><%=@post.content%></textarea><br />
+    진행 중 여부 :
+    <label><input type="radio" name="status" value="true"> 진행중 </label>   
+    <label><input type="radio" name="status" value="false"> 종료됨 </label> <br/>
+
+ <input type="submit" value="제출">
+</form>
+
+

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/assets/post.css">
+  </head>
+  <body>
+  <div class="header">
+        <div class="header_left">
+            <a href="/main"><img src="/assets/sub_logo.png" height="80px"></img></a>
+            <div class="sub_header">
+                <span class="menu"> 축제정보 </span>
+                <span class="menu"> 플리마켓 </span>
+                <span class="menu"> 푸드트럭 </span>
+                <span class="menu"> 축제영상 </span>
+            </div>
+        </div>
+        <div class="header_right">
+            <div class="sub_menu">
+                <span class="main_menu_title">현재 메뉴 정보</span> <br/>
+                <span class="sub_menu_title">첫 번째 부가 메뉴</span> <br/>
+                <span class="sub_menu_title">두 번째 부가 메뉴</span> <br/>
+                <span class="sub_menu_title">세 번째 부가 메뉴</span>
+            </div>
+            <form action="/post/status_update/<%=@post.id%>" method="post">
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %> <!-- 인증토큰 -->
+                <% if @post.status == false %>
+                    <button type="submit" class="status" name="status" value="true"> 이벤트가 종료되었어요 </button>
+                <% elsif @post.status == true %>
+                    <button type="submit" class="status" name="status" value="false"> 이벤트가 진행중이예요 </button>
+                <% end %>
+        </div>
+    </div>
+
+    <!-- 이 쪽에 본문 내용이 들어갑니다 -->
+    <div class = "content">
+        <h1 class="main_title"> 강남대학교 축제 이벤트 페이지 </h1>
+        <!-- 사진, 그리고 상점에 대한 내용을 구현 -->
+        <div class="show_content">
+            <!-- 사진을 제외한 오른쪽 상점에 대한 내용을 구현 -->
+            <img class="show_img" src="<%=@post.avatar.url %>"/>
+            <div class = "right_content">
+                <button class="sub_title"><%= @post.sub_title %></button>
+                <button class="sub_title">
+                <% if @post.status == true %>
+                    진행중
+                <% elsif @post.status == false %>
+                    종료됨
+                <% end %>
+                </button>
+                <p class="show_title"><%=@post.title%></p> <br/>
+                <p class="show_description"><%=@post.content%></p>
+
+                <button class="sub_title"><%= @post.title %>의 상세 위치를 알려드려요</button>
+                <div id="map" style="width:670px;height:450px;"></div>
+
+                <script>
+                    // 마커가 표시될 위치입니다 
+                    var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+                    var options = { //지도를 생성할 때 필요한 기본 옵션
+                        center: new kakao.maps.LatLng(37.27574, 127.13249), //지도의 중심좌표.
+                        level: 3 //지도의 레벨(확대, 축소 정도)
+                    };
+                    var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+
+                    var markerPosition  = new kakao.maps.LatLng(<%=@x%>, <%=@y%>); 
+                    // 마커를 생성합니다
+                    var marker = new kakao.maps.Marker({
+                        position: markerPosition
+                    });
+
+                    // 마커가 지도 위에 표시되도록 설정합니다
+                    marker.setMap(map);
+                </script>
+
+            </div>
+        </div>
+    </div>
+    </form>
+    </body>
+
+</html>

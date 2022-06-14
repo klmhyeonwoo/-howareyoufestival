@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/assets/post.css">
+  </head>
+  <body>
+  <div class="header">
+        <div class="header_left">
+            <a href="/main"><img src="/assets/sub_logo.png" height="80px"></img></a>
+            <div class="sub_header">
+                <span class="menu"> 축제정보 </span>
+                <span class="menu"> 플리마켓 </span>
+                <span class="menu"> 푸드트럭 </span>
+                <span class="menu"> 축제영상 </span>
+            </div>
+        </div>
+        <div class="header_right">
+            <div class="sub_menu">
+                <span class="main_menu_title">현재 메뉴 정보</span> <br/>
+                <span class="sub_menu_title">첫 번째 부가 메뉴</span> <br/>
+                <span class="sub_menu_title">두 번째 부가 메뉴</span> <br/>
+                <span class="sub_menu_title">세 번째 부가 메뉴</span>
+            </div>
+            <a href="/post/new"> <button class="status"> 새로운 게시물 작성 </button> </a>
+        </div>
+    </div>
+
+<!-- 이 쪽에 본문 내용이 들어갑니다 -->
+    <div class = "content">
+    <h1 class="main_title"> 강남대학교 축제 이벤트 페이지 </h1>
+    <!-- 그리드 시스템 구현 -->
+    <div class="container">
+  <div class="row row-cols-3">
+    <% @posts.each do |x| %>
+        <div class="col">
+            <a href="/post/show/<%=x.id%>" class="target_link">
+                <img class="post_img" src="<%=x.avatar.url %>"/> <br/>
+                <button class="sub_title"><%= x.sub_title %></button>
+                <button class="sub_title">
+                    <% if x.status == true %>
+                        진행중
+                    <% elsif x.status == false %>
+                        종료됨
+                    <% end %>
+                </button> <br/>
+                <p class ="title"> <%= x.title %> </p> <br/>
+            </a>
+        </div> 
+     <% end %>
+    </div>
+    </div>
+        </div>
+
+    </body>
+
+</html>
