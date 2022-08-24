@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/assets/post.css">
+  </head>
+  <body>
+
+  <div class="header">
+        <div class="header_left">
+            <a href="/main"><img src="/assets/sub_logo.png" height="80px"></img></a>
+            <div class="sub_header">
+                <span class="menu_selected"> 축제정보 </span>
+                <span class="menu"> 플리마켓 </span>
+                <span class="menu"> 푸드트럭 </span>
+                <span class="menu"> 축제영상 </span>
+            </div>
+        </div>
+        <div class="header_right">
+            하단의 메뉴를 통해 <br/> 세부 카테고리를 볼 수 있어요!
+        </div>
+    </div>
+
+<!-- 이 쪽에 본문 내용이 들어갑니다 -->
+    <div class="content">
+        <div class = "left_side">
+            <h1 class="main_title"> 축제 주점을 알려드리고 있어요 </h1>
+                <!-- 그리드 시스템 구현 -->
+                <div class="container">
+                    <div class="row row-cols-3">
+                    <% @market1s.each do |x| %>
+                        <div class="col">
+                            <a href="/market1/show/<%=x.id%>" class="target_link">
+                                <img class="post_img" src="<%=x.avatar.url %>"/> <br/>
+                                <button class="sub_title"><%= x.sub_title %></button>
+                                <button class="sub_title">
+                                    <% if x.status == true %>
+                                        진행중
+                                    <% elsif x.status == false %>
+                                        종료됨
+                                    <% end %>
+                                </button> <br/>
+                                <p class ="title"> <%= x.title %> </p> <br/>
+                            </a>
+                        </div> 
+                    <% end %>
+                    </div>
+                </div>
+        </div>
+        <div class="right_side">
+
+        <div class="quickmenu">
+            <a href="/post/index" class="menu_a">
+                <div class="sub_menu">
+                        축제 이벤트
+                </div>
+            </a>
+
+            <a href="/plan/index" class="menu_a">
+                <div class="sub_menu">
+                        축제 일정
+                </div>          
+            </a>             
+            
+            <a href="/market1/index" class="menu_a">
+                <div class="sub_menu_selected">
+                        축제 주점
+                </div>    
+            </a>
+            
+            <a href="/market1/new"> <button class="status"> 새로운 게시물 작성 </button> </a>
+
+        </div>
+
+        </div>
+    </div>
+
+
+    <script>
+        /* 따라 다니는 퀵 메뉴 시작 */
+        $(document).ready(function(){
+        var currentPosition = parseInt($(".quickmenu").css("top"));
+        $(window).scroll(function() {
+            var position = $(window).scrollTop(); 
+            $(".quickmenu").stop().animate({"top":position+currentPosition+"px"},800);
+        });
+        });
+        /* 따라 다니는 퀵 메뉴 종료 */
+    </script>
+    </body>
+
+</html>

@@ -53,6 +53,13 @@
     color : #707070;
 }
 
+.error_check {
+    color : #707070;
+    font-size: 9px;
+    margin-top: -7px;
+    margin-bottom: -7px;
+}
+
 .final_submit {
     border: none;
     border-radius: 50px 50px;

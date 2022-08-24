@@ -1,6 +1,6 @@
 class PostController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.all.order("id DESC") #id를 내림차순으로 정렬
   end
 
   def new 
@@ -13,6 +13,8 @@ class PostController < ApplicationController
     @post.content = params[:content] # 모델의 content에 연결하여 post_content 값을 저장
     @post.status = params[:status] # 모델의 status에 연결하여 status 값을 저장
     @post.avatar = params[:avatar]
+    @post.latitude = params[:latitude]
+    @post.longitude = params[:longitude]
     @post.save
 
     redirect_to '/post/index'
@@ -34,8 +36,10 @@ class PostController < ApplicationController
     @post = Post.find(params[:post_id])
     @post.title = params[:title] # 모델의 title에 연결하여 post_title 값을 저장
     @post.sub_title = params[:sub_title] # 모델의 sub_title에 연결하여 sub_title 값을 저장
-    @post.content = params[:content] # 모델의 content에 연결하여 content 값을 저장
+    @post.content = params[:content] # 모델의 content에 연결하여 post_content 값을 저장
     @post.status = params[:status] # 모델의 status에 연결하여 status 값을 저장
+    @post.latitude = params[:latitude]
+    @post.longitude = params[:longitude]
     @post.save
     
     redirect_to '/post/index'
@@ -51,7 +55,7 @@ class PostController < ApplicationController
 
   def show
     @post = Post.find(params[:post_id])
-    @x = 37.27574
-    @y = 127.13249
+    @x = 37.33062744906317
+    @y = 127.11086061761277
   end
 end

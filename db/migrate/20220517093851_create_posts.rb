@@ -5,6 +5,8 @@ class CreatePosts < ActiveRecord::Migration[7.0]
       t.string :sub_title
       t.boolean :status
       t.text :content
+      t.float :latitude
+      t.float :longitude
       t.timestamps
     end
   end
