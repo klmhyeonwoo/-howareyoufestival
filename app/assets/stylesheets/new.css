@@ -1,10 +1,45 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+  }
+
+a {
+    font-family: 'Pretendard-Medium';
+}
+
+span {
+    font-family: 'Pretendard-Medium';
+}
+
+p {
+    font-family: 'Pretendard-Medium';
+}
+
 .new_content {
     position: absolute;
     width : auto;
     top : 50%;
     left : 50%;
     transform: translate(-50%, -50%);
-
     height : 100%;
     margin: 50px;
 }
@@ -37,7 +72,7 @@
 .textarea {
     border: none;
     width: auto;
-    min-width: 600px;
+    min-width: 400px;
     max-width: 2000px;
     font-size: 13px;
     resize: none;
@@ -72,6 +107,11 @@
     margin-bottom: 50px;
     background-color: #007AC3;
     color : white;
+    margin-left: auto;
+}
+
+.submit_section {
+    text-align: center;
 }
 
 .final_submit:hover {
@@ -89,4 +129,23 @@
 .radio_title{
     font-size: 13px;
     vertical-align:-7px
+}
+
+#youtubeImg {
+    width : 200px;
+}
+
+.youtubeImgUpload {
+    display: flex;
+    align-items: center;
+}
+
+#youtubeUrl {
+    margin-left: 40px;
+}
+
+#youtubeMessage {
+    font: 700;
+    margin-top: 10px;
+    color: red;
 }

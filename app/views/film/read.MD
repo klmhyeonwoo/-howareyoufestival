@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/assets/new.css">
+  </head>
+  <body>
+  <a href="/film/index">
+  <img class="back_icon" src="/assets/back_icon.png"/>
+  </a>
+  <div class="new_content">
+    <form action="/film/create" name="myform" method="post" onsubmit="return field_check()" encType="multipart/form-data">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %> <!-- 인증토큰 -->
+        <input class="submit" type="text" name="title" maxlength='20' value="" placeholder="제목을 입력해주세요" required> <br/>
+        <input class="sub_submit" type="text" name="sub_title" maxlength='7' value="" placeholder="상단에 보여질 조그마한 제목을 입력해주세요"><br />
+        <hr width = "100%" color = "gray">
+        <textarea class = "textarea" name="content" rows="8" cols="80" placeholder="내용을 입력해주세요" required></textarea><br />
+        <input type="hidden" class="x" value="" name="latitude" readonly/> <br/> <!-- 위도 -->
+        <input type="hidden" class="y" value="" name="longitude" readonly/> <br/> <!-- 경도 -->
+        <hr width = "100%" color = "gray">
+        <p class="map_title"> 위치 설정은 저희가 자동으로 해드릴게요, 정확한 위치 설정을 위해 위치 정보를 허용주세요! </p>
+        <div id="map" style="width:670px; height:450px;"></div> <br />
+        <p class="error_check" onClick=error_check_onClick()> 해당 이벤트가 위치한 곳이 아니라면, 이곳을 클릭해주세요 :-) </p>
+
+        <hr width = "100%" color = "gray">
+        <p class="map_title"> 현재 축제의 진행 상태를 알려주세요, 상점 영업 상태를 알려줄 수 있어요! </p>
+          <div class="radio_group">
+            <label class="radio_title"> 현재 해당 이벤트가 진행중이예요 </label>
+            <input type="radio" name="status" id="status_btn" value="true">
+          </div>
+          <div class="radio_group">
+            <label class="radio_title"> 현재 해당 이벤트가 종료되었어요 </label>
+            <input type="radio" name="status" id="status_btn" value="false" checked>
+          </div>
+        <hr width = "100%" color = "gray">
+        <p class="map_title"> 화면에 표시될 상점의 이미지를 첨부해보세요! </p>
+        <!-- <label className="input-file-button" for="input-file">
+            업로드
+          </label> -->
+        <input type="file" class="upload" name="avatar" id="upload" value=""/><br />
+
+      <input type="submit" class="final_submit" value="글 작성하기">
+    </form>
+  </div>
+        <script>
+
+        // 필드 체크 함수
+        function field_check() {
+          var x = document.myform;
+
+          if (x.title.value == "") {
+            alert("제목을 입력해주세요!");
+            x.title.focus();
+            return false;
+          }
+
+          else if (x.sub_title.value == "") {
+            alert("소제목을 입력해주세요!");
+            x.title.focus();
+            return false;
+          }
+
+          else if (x.content.value == "") {
+            alert("상점을 소개해주세요!");
+            return false;
+          }
+
+          else if (x.avatar.value == "") {
+            alert("상점 이미지를 업로드 해주세요!");
+            return false;
+          }
+        }
+
+        var error_check = false;
+
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+          mapOption = { 
+              center: new kakao.maps.LatLng(37.27574, 127.13249), // 지도의 중심좌표
+              level: 3 // 지도의 확대 레벨 
+          }; 
+
+        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+        var marker = new kakao.maps.Marker({ 
+            // 지도 중심좌표에 마커를 생성합니다 
+            position: locPosition,
+        }); 
+
+        // 지도에 마커를 표시합니다
+        marker.setMap(map);
+
+        // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+        if (navigator.geolocation) {
+            // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+            navigator.geolocation.getCurrentPosition(function(position) {
+                
+                var lat = position.coords.latitude, // 위도
+                    lon = position.coords.longitude; // 경도
+
+                document.getElementsByClassName('x')[0].value = lat;
+                document.getElementsByClassName('y')[0].value = lon;
+
+                var locPosition = new kakao.maps.LatLng(lat, lon) // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+                var message = '<div style="color:#007AC3; padding:7px; font-size:12px;">현재 위치를 가져왔어요!</div>'; // 인포윈도우에 표시될 내용입니다
+
+
+                var iwContent = message, // 인포윈도우에 표시할 내용
+                    iwRemoveable = true,
+                    iwPosition = new kakao.maps.LatLng(lat, lon); //인포윈도우 표시 위치입니다
+
+            
+                // 지도 중심좌표를 접속위치로 변경합니다
+                map.setCenter(locPosition);
+
+                // 마커의 위치를 변경합니다
+                marker.setPosition(locPosition);
+              });
+            
+        } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+            
+            var locPosition = new kakao.maps.LatLng(37.27574, 127.13249),
+                message = 'geolocation을 사용할수 없어요..'
+                
+            displayMarker(locPosition, message);
+        }
+
+        function error_check_onClick() {
+          alert('지도에 수동으로 이벤트 위치를 표시해주세요!');
+          error_check = true;
+        }
+
+            kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+      
+              if (error_check === true) {
+                  // 클릭한 위도, 경도 정보를 가져옵니다 
+                  var latlng = mouseEvent.latLng; 
+                  // 마커 위치를 클릭한 위치로 옮깁니다
+                  marker.setPosition(latlng);
+
+                document.getElementsByClassName('x')[0].value = latlng.getLat();
+                document.getElementsByClassName('y')[0].value = latlng.getLng();
+
+                console.log(document.getElementsByClassName('x')[0].value);
+                console.log(document.getElementsByClassName('y')[0].value);
+              }
+            });
+
+      </script>
+    </body>
+
+</html>
