@@ -5,6 +5,8 @@ ruby "3.0.0"
 
 gem "carrierwave"
 
+gem "rack-cors"
+
 gem "rails_db"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

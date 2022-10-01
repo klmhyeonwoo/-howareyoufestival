@@ -10,8 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_23_064931) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_29_085626) do
+  create_table "films", force: :cascade do |t|
+    t.string "title"
+    t.string "sub_title"
+    t.text "content"
+    t.text "youtubeUrl"
+    t.text "youtubeKey"
+    t.text "youtubeSaveImg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "avatar"
+  end
+
   create_table "market1s", force: :cascade do |t|
+    t.string "title"
+    t.string "sub_title"
+    t.boolean "status"
+    t.text "content"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "avatar"
+  end
+
+  create_table "market2s", force: :cascade do |t|
+    t.string "title"
+    t.string "sub_title"
+    t.boolean "status"
+    t.text "content"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "avatar"
+  end
+
+  create_table "market3s", force: :cascade do |t|
     t.string "title"
     t.string "sub_title"
     t.boolean "status"

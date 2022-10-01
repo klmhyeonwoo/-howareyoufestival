@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'market2/index'
   get 'plan/index'
   root "home#index"
 
@@ -41,6 +42,40 @@ Rails.application.routes.draw do
   post 'market1/update/:market1_id' =>'market1#update'
   post 'market1/status_update/:market1_id' => 'market1#status_update'
 
+  # 플리 마켓 게시물 라우터
+  get 'market2/playingIndex'
+  get 'market2/endIndex'
+  get 'market2/new'
+  post 'market2/create'
+
+  get 'market2/destroy/:market2_id' => 'market2#destroy'
+  get 'market2/edit/:market2_id' =>'market2#edit'
+  get 'market2/show/:market2_id' => 'market2#show'
+  post 'market2/update/:market2_id' =>'market2#update'
+  post 'market2/status_update/:market2_id' => 'market2#status_update'
+
+  # 푸드 트럭 게시물 라우터
+  get 'market3/playingIndex'
+  get 'market3/endIndex'
+  get 'market3/new'
+  post 'market3/create'
+
+  get 'market3/destroy/:market3_id' => 'market3#destroy'
+  get 'market3/edit/:market3_id' =>'market3#edit'
+  get 'market3/show/:market3_id' => 'market3#show'
+  post 'market3/update/:market3_id' =>'market3#update'
+  post 'market3/status_update/:market3_id' => 'market3#status_update'
+
+  # 축제 영상 게시물 라우터
+  get 'film/index'
+  get 'film/new'
+  post 'film/create'
+
+  get 'film/destroy/:film_id' => 'film#destroy'
+  get 'film/edit/:film_id' =>'film#edit'
+  get 'film/show/:film_id' => 'film#show'
+  post 'film/update/:film_id' =>'film#update'
+  post 'film/status_update/:film_id' => 'film#status_update'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

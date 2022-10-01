@@ -38,7 +38,6 @@ class Market1Controller < ApplicationController
     @market1.sub_title = params[:sub_title] # 모델의 sub_title에 연결하여 sub_title 값을 저장
     @market1.content = params[:content] # 모델의 content에 연결하여 post_content 값을 저장
     @market1.status = params[:status] # 모델의 status에 연결하여 status 값을 저장
-    @market1.avatar = params[:avatar]
     @market1.latitude = params[:latitude]
     @market1.longitude = params[:longitude]
     @market1.save

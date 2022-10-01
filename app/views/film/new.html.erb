@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/assets/new.css">
+  </head>
+  <body>
+  <a href="/film/index">
+  <img class="back_icon" src="/assets/back_icon.png"/>
+  </a>
+  <div class="new_content">
+    <form action="/film/create" name="myform" method="post" onsubmit="return field_check()" encType="multipart/form-data">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %> <!-- 인증토큰 -->
+        <input class="submit" type="text" name="title" maxlength='20' value="" placeholder="제목을 입력해주세요" required> <br/>
+        <input class="sub_submit" type="text" name="sub_title" maxlength='7' value="" placeholder="상단에 보여질 조그마한 제목을 입력해주세요"><br />
+        <hr width = "100%" color = "gray">
+        <textarea class = "textarea" name="content" rows="8" cols="80" placeholder="내용을 입력해주세요" required></textarea><br />
+        <hr width = "100%" color = "gray">
+        <input type="hidden" id="youtubeKey" value="" name="youtubeKey" readonly/> <br/> <!-- 키값 -->
+        <div class="youtubeImgUpload">
+          <img src="/assets/youtubeDefault.png" id="youtubeImg" onerror="onErrorImg()"/> 
+          <textarea class = "textarea" name="youtubeUrl" id="youtubeUrl" rows="1" cols="50" placeholder="해당 영상의 유튜브 주소를 여기에 입력해주세요!" required></textarea>
+        </div>
+        <div class="loadingBar">
+        <!--
+          <div class="loading">
+            <span></span>   
+            <span></span>
+            <span></span>
+          </div>
+        -->
+        </div>
+        <p id="youtubeMessage"> </p>
+        <input type="hidden" id="youtubeSaveImg" value="" name="youtubeSaveImg" readonly/> <br/> <!-- 키값 -->
+        <!-- <label className="input-file-button" for="input-file">
+            업로드
+          </label> -->
+        <hr width = "100%" color = "gray"> <br/>
+      <input type="submit" class="final_submit" value="글 작성하기">
+    </form>
+  </div>
+        <script src="/assets/youtubeKey.js"></script>
+    </body>
+
+</html>
