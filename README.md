@@ -14,6 +14,6 @@
 - gem 'devise-i18n'- 영문으로 되어진 devise gem 라이브러리의 번역을 도와주는 gem
 - gem "rails_db" - 데이터베이스 스키마를 확인하기 위한 gem
 - gem 'jquery-rails' - 퀵 메뉴 구현을 위해 jquery 문법을 사용하기 위한 gem
-... 그 밖에 scaffold를 사용하여 게시물을 구현하였어요
+- ... 그 밖에 scaffold를 사용하여 게시물을 구현하였어요
 ##### 개발 환경은 다음과 같은 것들을 사용해요
 <img src="https://user-images.githubusercontent.com/19422885/201467830-e0318668-d782-4c57-9c2d-bc2588bbc7c4.png" style="width:1000px"/>
