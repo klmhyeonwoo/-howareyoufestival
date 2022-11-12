@@ -16,4 +16,4 @@
 - gem 'jquery-rails' - 퀵 메뉴 구현을 위해 jquery 문법을 사용하기 위한 gem
 - ... 그 밖에 scaffold를 사용하여 게시물을 구현하였어요
 ##### 개발 환경은 다음과 같은 것들을 사용해요
-<img src="https://user-images.githubusercontent.com/19422885/201467830-e0318668-d782-4c57-9c2d-bc2588bbc7c4.png" style="width:1000px"/>
+<img src="https://user-images.githubusercontent.com/19422885/201467830-e0318668-d782-4c57-9c2d-bc2588bbc7c4.png" style="width:700px"/>
