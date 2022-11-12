@@ -50,7 +50,7 @@ class PostController < ApplicationController
     @post.status = params[:status]
     @post.save
 
-    redirect_to '/post/show/@post.id'
+    redirect_to '/post/show/' + @post.id.to_s
   end
 
   def show

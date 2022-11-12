@@ -1,19 +1,28 @@
 Rails.application.routes.draw do
-  get 'market2/index'
-  get 'plan/index'
   root "home#index"
 
-  get "/main" => 'post#index'
+  # 로그인 화면 라우터
+  devise_for :users
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+    get '/login' => 'devise/sessions#new'
+    get '/signup' => 'devise/registrations#new'
+  end
+
 
   # 기본 INDEX 화면 라우터
   get 'home/index'
-  get 'market1/index'
+  
+  # 편의시설 화면 라우터
+  get 'home/facilities'
+  get '/facilities' => 'home#facilities'
 
   # 축제 이벤트 게시물 라우터
   get 'post/index'
   get 'post/new'
   post 'post/create'
 
+  get "/main" => 'post#index'
   get 'post/destroy/:post_id' => 'post#destroy'
   get 'post/edit/:post_id' =>'post#edit'
   get 'post/show/:post_id' => 'post#show'

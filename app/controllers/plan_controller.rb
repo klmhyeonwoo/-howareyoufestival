@@ -50,7 +50,7 @@ class PlanController < ApplicationController
     @plan.status = params[:status]
     @plan.save
 
-    redirect_to '/plan/show/@plan.id'
+    redirect_to '/plan/show/' + @plan.id.to_s
   end
 
   def show

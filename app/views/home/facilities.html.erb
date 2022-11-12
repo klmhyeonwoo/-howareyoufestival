@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/assets/post.css">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a641315a00c2dba6b2b3cfda3afe67c5&libraries=services,clusterer,drawing"></script>
+  </head>
+  <body>
+
+    <div class="header">
+            <div class="header_left">
+                <a href="/main"> 
+                <img src="/assets/new_logo.png" class="boardOfLogo">
+            </img></a>
+                <div class="sub_header">
+                        <a href="/post/index" class="menu">
+                            축제정보 
+                        </a>
+                    <a href="/market2/playingIndex" class="menu">
+                                플리마켓 
+                        </a>
+                        <a href="/market3/playingIndex" class="menu">
+                            푸드트럭 
+                        </a>
+                        <a href="/film/index" class="menu">
+                            축제영상 
+                        </a>
+                </div>
+            </div>
+    </div>
+
+<!-- 이 쪽에 본문 내용이 들어갑니다 -->
+    <div class="content">
+        <div class = "left_side">
+                <!-- 그리드 시스템 구현 -->
+                <div class="container">
+                    <h1 class="main_title">우리 학교 주변 편의시설을 검색해보세요! </h1>
+                    <div class="containerOfTag">
+                        <button onclick="setValueOfTag(event); return false;" class="tagOfButton" value="카페" type="submit">#카페</button>
+                        <button onclick="setValueOfTag(event)" class="tagOfButton" value="편의점" type="submit">#편의점</button>
+                        <button onclick="setValueOfTag(event)" class="tagOfButton" value="노래방" type="submit">#노래방</button>
+                        <button onclick="setValueOfTag(event)" class="tagOfButton" value="술집" type="submit">#술집</button>
+                        <button class="tagOfButton" type="submit">마커를 누르면 장소의 이름을 알려드려요!</button>
+                    </div>
+                    <form onsubmit="setValue(); return false;">
+                        <input type="text" value="" id="keyword" class="inputOfFacilities" placeholder="여기에 편의시설을 검색해보세요!">
+                    </form>
+                    <div class="row row-cols-3">
+                            <div id="map" class="map_facilities" style="border-radius:10px; margin-left:9px; z-index:0; width:85%; height:600px;"></div>
+                    </div>
+                </div>
+        </div>
+        <div class="right_side">
+
+        <div class="quickmenu">
+
+            <div class="header_right">
+                <% if user_signed_in? %>
+                <a class="signoutAdmin" href="/users/sign_out">
+                    관리자로 로그인이 되어있어요, <br/>
+                    작업이 끝났으면 여길 눌러주세요!
+                </a>
+                <%else%>
+                하단의 메뉴를 통해 <br/> 세부 카테고리를 볼 수 있어요!
+                <%end%>
+            </div>
+
+            <a href="/post/index" class="menu_a">
+                <div class="sub_menu">
+                        축제 이벤트
+                </div>
+            </a>
+
+            <a href="/plan/index" class="menu_a">
+                <div class="sub_menu">
+                        축제 일정
+                </div>  
+            </a>
+          
+            
+            <a href="/market1/index" class="menu_a">
+                <div class="sub_menu">
+                        축제 주점
+                </div>    
+            </a>
+            
+            <div class="weatherContainer">
+                <div class="weatherFace">
+                    <img class="weatherFaceImg" src="/assets/weatherWhatFace.png"/> <br/>
+                    <span class="weatherFaceText">...오늘의 날씨를 찾는 중이에요!</span>
+                </div>
+            </div>
+            
+            <div class="facilitiesContainer">
+                <div class="facilities">
+                    <img class="facilitiesFaceImg" src="/assets/hereboy.png"/> <br/>
+                    <span class="facilitiesFaceText">우리 학교 주변 편의시설을 알려드려요!</span>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+
+    <script src="/assets/facilities.js"></script>
+    <script>
+        /* 따라 다니는 퀵 메뉴 시작 */
+        $(document).ready(function(){
+        var currentPosition = parseInt($(".quickmenu").css("top"));
+        $(window).scroll(function() {
+            var position = $(window).scrollTop(); 
+            $(".quickmenu").stop().animate({"top":position+currentPosition+"px"},800);
+        });
+    });
+        /* 따라 다니는 퀵 메뉴 종료 */
+    </script>
+    </body>
+
+</html>
