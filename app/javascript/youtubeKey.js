@@ -105,18 +105,18 @@ function checkUrl(currentVal) { // 유튜브 주소에서 ID 값만 쏙 빼오�
 }
 
 function detection() {
-$("#youtubeUrl").on("propertychange change keyup paste input", function() {
-    var currentVal = $(this).val();
-    if(currentVal == oldVal) {
-        return;
-    }
-    var oldVal = currentVal;
-    checkUrl(currentVal);
-});
+    $("#youtubeUrl").on("propertychange change keyup paste input", function() {
+        var currentVal = $(this).val();
+        if(currentVal == oldVal) {
+            return;
+        }
+        var oldVal = currentVal;
+        checkUrl(currentVal);
+    });
 }
 
 function init() { // 모든 함수는 이 쪽에서 실행이 됩니다.
-detection();
+    detection();
 }
 
 init();

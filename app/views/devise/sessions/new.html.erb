@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="/assets/devise.css">
+
+<section>
+  <div class="container">
+
+        <img src="/assets/login_banner" class="logoOfLogin"/>
+
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+          <div class="boxOfEmail">
+            <div class="title">관리자 로그인</div>
+            <span>관리자 이메일</span>
+            <%= f.input :email,
+                        label: false,
+                        required: false,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" } %>
+            <img class="clearOfInput" src="/assets/clearOfInput"/>
+          </div>
+
+          <div class="boxOfPassword">
+            <span>관리자 비밀번호</span>
+            <%= f.input :password,
+                        label: false,
+                        required: false,
+                        input_html: { autocomplete: "current-password" } %>
+            <img class="clearOfInput" src="/assets/clearOfInput"/>
+          </div>
+          <div class="form-actions">
+            <div class="buttonOfSubmit">
+                  <%= f.button :submit, "로그인"%>
+            </div>
+          </div>
+          <span class="whoSignup">회원가입을 하시려면 관리자에게 문의해주세요!<span>
+        </div>
+      <% end %>
+  </div>
+
+  <script>
+    const clearOfInput = document.getElementsByClassName("clearOfInput");
+    clearOfInput[0].style.visibility = "hidden";
+    clearOfInput[0].style.cursor = "pointer";
+    clearOfInput[1].style.visibility = "hidden";
+    clearOfInput[1].style.cursor = "pointer";
+
+    clearOfInput[0].addEventListener("click", function() {
+      inputOfEmail.value = "";
+      clearOfInput[0].style.visibility = "hidden";
+    })
+
+    clearOfInput[1].addEventListener("click", function() {
+      inputOfPassword.value = "";
+      clearOfInput[1].style.visibility = "hidden";
+    })
+
+    const inputOfEmail = document.querySelector(".string.email.optional");
+    inputOfEmail.addEventListener("input", function() {
+      if (inputOfEmail.value !== "") {
+        clearOfInput[0].style.visibility = "visible";
+      } else {
+        clearOfInput[0].style.visibility = "hidden";
+      }
+    });
+
+    const inputOfPassword = document.querySelector(".password.optional").childNodes[0];
+    inputOfPassword.addEventListener("input", function() {
+      if (inputOfPassword.value !== "") {
+        clearOfInput[1].style.visibility = "visible";
+      } else {
+        clearOfInput[1].style.visibility = "hidden";
+      }    
+      })
+
+  </script>
+</section>
+

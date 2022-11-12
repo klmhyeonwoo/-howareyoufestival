@@ -6,16 +6,38 @@
   </head>
   <body>
     <div id="app">
+    </div>
 
-    </div>
-    <div class="section">
-      <img src="/assets/logo.png" class="logo"></img> <br />
+    <article class="section">
+      <img src="/assets/new_logo.png" class="logo"/> <br/>
       <a href="/main">
-        <button type="submit" class="btn">하우아유 페스티벌 바로가기</button>
+        <button type="submit" class="mainBtn"> 하유아유 페스티벌 팀과 함께 강남대학교 축제를 즐겨보세요</button>
       </a>
-    </div>
-    <p class="guide"> 하우어유 페스티벌을 처음 이용하시나요? <br /> <a href="https://www.h4vebeauty.com" class="guide_link" target="_blank">하우아유 페스티벌 가이드 보러가기</a></p>
-    <script src="/assets/weather.js"></script>
-    <script type="module" src="/assets/main.js"></script>
+    </article>
+    
+    <article class="guide">
+      <a href="https://www.h4vebeauty.com" class="guide_link" target="_blank">
+        <button class="guide_btn">
+            가이드를 알려드리고 있어요
+        </button>
+      </a>
+    </article>
+    <script>
+      const guide = document.querySelector(".guide_btn");
+      guide.style.width = "40px";
+      guide.style.whiteSpace = "nowrap";
+      guide.innerText = "";
+      guide.addEventListener("mouseover", function() {
+        guide.style.paddingLeft = "100px";
+        guide.style.paddingRight = "100px";
+        guide.innerText = "가이드를 알려드리고 있어요";
+      })
+      guide.addEventListener("mouseout", function() {
+        guide.style.width = "20px";
+        guide.style.paddingLeft = "20px";
+        guide.style.paddingRight = "20px";
+        guide.innerText = "";
+      })
+    </script>
   </body>
 </html>

@@ -7,7 +7,12 @@ gem "carrierwave"
 
 gem "rack-cors"
 
+gem 'devise-i18n'
+gem 'devise'
+
 gem "rails_db"
+gem 'jquery-rails'
+
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.2", ">= 7.0.2.3"
