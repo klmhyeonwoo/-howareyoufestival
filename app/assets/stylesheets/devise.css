@@ -22,6 +22,23 @@
     font-style: normal;
 }
 
+.containerOf404 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgOf404 {
+    width: 160px;
+}
+
+.pageOf404 {
+    font-size: 17px;
+    white-space: nowrap;
+    font-family: 'Pretendard-Bold';
+}
+
 input {
     font-family: 'Pretendard-Medium';
     width: 380px;

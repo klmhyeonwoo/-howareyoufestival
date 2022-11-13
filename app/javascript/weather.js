@@ -73,6 +73,7 @@ if (sessionStorage.getItem("weather") == null) {
     const weather = sessionStorage.getItem("weather");
     const imgSrc = sessionStorage.getItem("imgSrc");
     weatherImg.src = imgSrc;
+    weatherImg2.src = imgSrc;
     weatherText.innerHTML = `${weather}의 날씨예요!`;
     weatherText2.innerHTML = `${weather}의 날씨예요!`;
 }

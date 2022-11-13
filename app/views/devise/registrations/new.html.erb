@@ -5,6 +5,7 @@
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <div class="form-inputs">
       <div class="boxOfEmail">
+      <% if current_user && current_user.has_role?(:admin) %>
         <div class="title">관리자 회원가입</div>
         <span>이메일</span> 
         <%= f.input :email,
@@ -36,6 +37,11 @@
       </div>
     </div>
     <a href="/users/sign_in" class="goToLogin"> 로그인을 하실건가요? </a>
+      <% end %>
+      <div class="containerOf404">
+        <img class="imgOf404" src="/assets/404_logo"/>
+        <span class="pageOf404">잘못된 접근을 하셨어요!</span>
+      </div>
     <% end %>
   </div>
 </section>
