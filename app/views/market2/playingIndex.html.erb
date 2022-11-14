@@ -78,6 +78,7 @@
                     <div class="row row-cols-3">
                     <% if @market2s.ids.length >= 1 %>
                         <% @market2s.each do |x| %>
+                            <% if x.status == true %>
                             <div class="col">
                                 <a href="/market2/show/<%=x.id%>" class="target_link">
                                     <img class="post_img" src="<%=x.avatar.url %>"/> <br/>
@@ -92,6 +93,7 @@
                                     <p class ="title"> <%= x.title %> </p> <br/>
                                 </a>
                             </div> 
+                            <% end %>
                         <% end %>
                     <% else %>
                         <div class="noBoardContainer">
