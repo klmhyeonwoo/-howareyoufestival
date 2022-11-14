@@ -73,6 +73,11 @@ title {
     font-family: 'Pretendard-Bold';
 }
 
+.filmBtn {
+    display: flex;
+    column-gap: 4px;
+}
+
 
 @media all and (min-width: 300px) and (max-width: 500px) {
 

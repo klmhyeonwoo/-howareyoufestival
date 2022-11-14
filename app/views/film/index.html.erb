@@ -90,7 +90,10 @@
                                     <button class="sub_title"> 수정 </button>
                                     <button class="sub_title"> 삭제 </button>  <br/>
                                     -->
-                                    <button class="sub_title"><%= x.sub_title %></button><br/>
+                                    <div class="filmBtn">
+                                        <button class="sub_title"><%= x.sub_title %></button><br/>
+                                        <a href="/film/destroy/<%=x.id%>" onClick="return confirm('정말로 게시글을 삭제하시겠습니까?');"> <button class="sub_title"> 이벤트를 삭제할게요 </button> </a>
+                                    </div>
                                     <p class ="title"> <%= x.title %> </p> <br/>
                                 </a>
                             </div> 
