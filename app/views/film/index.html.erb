@@ -26,9 +26,11 @@
                                     업로드된 축제영상
                         </a> 
                     </div>
-                    <div class="sub_menu">
-                        <a href="/film/new">새로운 게시물 작성</a>
-                    </div>
+                    <% if user_signed_in? %>
+                        <div class="sub_menu">
+                            <a href="/film/new">새로운 게시물 작성</a>
+                        </div>
+                    <%end%>
 
 
                     <% if user_signed_in? %>
