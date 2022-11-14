@@ -138,9 +138,9 @@
                             <% elsif @market1.status == true %>
                                 <button type="submit" class="status" name="status" value="false"> 이벤트를 종료 상태로 변경 </button>
                             <% end %>    
+                            <a href="/market1/destroy/<%=@market1.id%>" onClick="return confirm('정말로 게시글을 삭제하시겠습니까?');"> <button class="status"> 이벤트를 삭제할게요 </button> </a>
+                            <a href="/market1/edit/<%=@market1.id%>"> <button class="status"> 이벤트를 수정할게요 </button> </a>
                     <% end %>
-                        <a href="/market1/destroy/<%=@market1.id%>" onClick="return confirm('정말로 게시글을 삭제하시겠습니까?');"> <button class="status"> 이벤트를 삭제할게요 </button> </a>
-                        <a href="/market1/edit/<%=@market1.id%>"> <button class="status"> 이벤트를 수정할게요 </button> </a>
 
                         <div class="weatherContainer">
                             <div class="weatherFace">
