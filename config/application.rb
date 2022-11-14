@@ -14,7 +14,8 @@ module Festival
     config.time_zone = 'Seoul'
 
     config.assets.initialize_on_precompile = false
-
+    config.assets.digest = true
+    config.serve_static_files = true
     
     config.middleware.insert_before 0, Rack::Cors do
       allow do
