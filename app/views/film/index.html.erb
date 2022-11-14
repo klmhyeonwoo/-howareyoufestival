@@ -92,7 +92,9 @@
                                     -->
                                     <div class="filmBtn">
                                         <button class="sub_title"><%= x.sub_title %></button><br/>
+                                        <% if user_signed_in? %>
                                         <a href="/film/destroy/<%=x.id%>" onClick="return confirm('정말로 게시글을 삭제하시겠습니까?');"> <button class="sub_title"> 이벤트를 삭제할게요 </button> </a>
+                                        <% end %>
                                     </div>
                                     <p class ="title"> <%= x.title %> </p> <br/>
                                 </a>

@@ -1,10 +1,12 @@
 class Market3Controller < ApplicationController
     def playingIndex
-        @market3s = Market3.all.order("id DESC") #id를 내림차순으로 정렬
+        @market3s = Market3.all.order("id DESC") #id를 내림차순으로 정렬 (변경 로직)
+        # @market3s = Market3.all.where(["status LIKE true", "%#{params[:status]}%"]).order("id DESC") (기존 로직)
       end
     
       def endIndex
-        @market3s = Market3.all.order("id DESC") #id를 내림차순으로 정렬
+        @market3s = Market3.all.order("id DESC") #id를 내림차순으로 정렬 (변경 로직)
+        # @market3s = Market3.all.where(["status LIKE true", "%#{params[:status]}%"]).order("id DESC") (기존 로직)
       end
     
       def new 
