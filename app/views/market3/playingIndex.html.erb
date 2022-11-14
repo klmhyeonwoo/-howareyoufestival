@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/assets/post.css">
+  </head>
+  <body>
+    <div class="header">
+            <!-- 모바일일때 햄버거 메뉴 구현 -->
+            <div class="hamburger">
+                <input class="burger-check" type="checkbox" id="burger-check" /><label class="burger-icon" for="burger-check"><span class="burger-sticks"></span></label>
+                <div class="menuBar">
+                    <div  class="innerHamburger" style="width: 200%;">
+                    <div class="header_right">
+                        <% if user_signed_in? %>
+                            <a class="signoutAdmin" href="/users/sign_out">
+                                관리자로 로그인이 되어있어요, 작업이 끝났으면 여길 눌러주세요!
+                            </a>
+                        <%else%>
+                            하단의 메뉴를 통해<br/>세부 카테고리를 볼 수 있어요!
+                        <%end%>
+                    </div>
+                    <div class="sub_menu_selected">
+                        <a href="/market3/playingIndex" class="menu_a"> 진행중인 푸드트럭 </a>
+                    </div>
+                    <div class="sub_menu">
+                        <a href="/market3/endIndex" class="menu_a"> 종료된 푸드트럭 </a>   
+                    </div>  
+
+                    <% if user_signed_in? %>
+                        <a href="/post/new"> <button class="status"> 새로운 게시물 작성 </button> </a>
+                    <% end %>
+                    <div class="weatherContainer">
+                        <img class="weatherFaceImg" src="/assets/weatherWhatFace.png"/> <br/>
+                        <span class="weatherFaceText">...오늘의 날씨를 찾는 중이에요!</span>
+                    </div>
+                    
+                    <div class="facilitiesContainer">
+                        <a href="/facilities">
+                                <img class="facilitiesFaceImg" src="/assets/hereboy.png"/> <br/>
+                                <span class="facilitiesFaceText">우리 학교 주변 편의시설을 알려드려요!</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <div class="header_left">
+                <a href="/main"> 
+                <img src="/assets/new_logo.png" class="boardOfLogo">
+            </img></a>
+                <div class="sub_header">
+                        <a href="/post/index" class="menu">
+                            축제정보 
+                        </a>
+                    <a href="/market2/playingIndex" class="menu">
+                                플리마켓 
+                        </a>
+                        <a href="/market3/playingIndex" class="menu_selected">
+                            푸드트럭 
+                        </a>
+                        <a href="/film/index" class="menu">
+                            축제영상 
+                        </a>
+                </div>
+            </div>
+    </div>
+
+    <!-- 햄버거 메뉴 구현 끝 -->
+
+<!-- 이 쪽에 본문 내용이 들어갑니다 -->
+    <div class="content">
+        <div class = "left_side">
+                <!-- 그리드 시스템 구현 -->
+                <div class="container">
+                    <h1 class="main_title">우리 학교 푸드트럭을 한번 살펴볼까요? </h1>
+                    <div class="row row-cols-3">
+                    <% if @market3s.ids.length >= 1 %>
+                        <% @market3s.each do |x| %>
+                            <div class="col">
+                                <a href="/market3/show/<%=x.id%>" class="target_link">
+                                    <img class="post_img" src="<%=x.avatar.url %>"/> <br/>
+                                    <button class="sub_title"><%= x.sub_title %></button>
+                                    <button class="sub_title">
+                                        <% if x.status == true %>
+                                            진행중
+                                        <% elsif x.status == false %>
+                                            종료됨
+                                        <% end %>
+                                    </button> <br/>
+                                    <p class ="title"> <%= x.title %> </p> <br/>
+                                </a>
+                            </div> 
+                        <% end %>
+                    <% else %>
+                        <div class="noBoardContainer">
+                            <div class="noBoard">
+                                <img class="noBoardSign" src="/assets/noBoardSign.png"/> <br/>
+                                <span class="noBoardText"> 아직 게시물이 존재하지 않아요! </span>
+                            </div>
+                        </div>
+                    <% end %>
+                    </div>
+                </div>
+        </div>
+        <div class="right_side">
+
+        <div class="quickmenu">
+
+        <div class="header_right">
+            <% if user_signed_in? %>
+            <a class="signoutAdmin" href="/users/sign_out">
+                관리자로 로그인이 되어있어요, <br/>
+                작업이 끝났으면 여길 눌러주세요!
+            </a>
+            <%else%>
+            하단의 메뉴를 통해 <br/> 세부 카테고리를 볼 수 있어요!
+            <%end%>
+        </div>
+        
+            <a href="/market3/playingIndex" class="menu_a">
+                <div class="sub_menu_selected">
+                        진행중인 푸드트럭
+                </div>
+            </a>
+
+            <a href="/market3/endIndex" class="menu_a">
+                <div class="sub_menu">
+                        종료된 푸드트럭
+                </div>          
+            </a>             
+            <% if user_signed_in? %>
+                <a href="/market3/new"> <button class="status"> 새로운 게시물 작성 </button> </a>
+            <% end %>
+            <div class="weatherContainer">
+                <div class="weatherFace">
+                    <img class="weatherFaceImg" src="/assets/weatherWhatFace.png"/> <br/>
+                    <span class="weatherFaceText">...오늘의 날씨를 찾는 중이에요!</span>
+                </div>
+            </div>
+            
+            <div class="facilitiesContainer">
+            <a href="/facilities">
+                <div class="facilities">
+                    <img class="facilitiesFaceImg" src="/assets/hereboy.png"/> <br/>
+                    <span class="facilitiesFaceText">우리 학교 주변 편의시설을 알려드려요!</span>
+                </div>
+            </a>
+            </div>
+
+        </div>
+
+        </div>
+    </div>
+
+    <script>
+        /* 따라 다니는 퀵 메뉴 시작 */
+        $(document).ready(function(){
+        var currentPosition = parseInt($(".quickmenu").css("top"));
+        $(window).scroll(function() {
+            var position = $(window).scrollTop(); 
+            $(".quickmenu").stop().animate({"top":position+currentPosition+"px"},800);
+        });
+        });
+        /* 따라 다니는 퀵 메뉴 종료 */
+    </script>
+    </body>
+
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/assets/post.css">
+  </head>
+  <body>
+
+    <div class="header">
+            <!-- 모바일일때 햄버거 메뉴 구현 -->
+            <div class="hamburger">
+                <input class="burger-check" type="checkbox" id="burger-check" /><label class="burger-icon" for="burger-check"><span class="burger-sticks"></span></label>
+                <div class="menuBar">
+                    <div  class="innerHamburger" style="width: 200%;">
+                    <div class="header_right">
+                        <% if user_signed_in? %>
+                            <a class="signoutAdmin" href="/users/sign_out">
+                                관리자로 로그인이 되어있어요, 작업이 끝났으면 여길 눌러주세요!
+                            </a>
+                        <%else%>
+                            하단의 메뉴를 통해<br/>세부 카테고리를 볼 수 있어요!
+                        <%end%>
+                    </div>
+                    <a href="/market3/playingIndex" class="menu_a">
+                        <% if @market3.status == false %>
+                            <div class="sub_menu">
+                                    진행중인 푸드트럭
+                            </div>        
+                        <% elsif @market3.status == true %>
+                            <div class="sub_menu_selected">
+                                    진행중인 푸드트럭
+                            </div>        
+                        <% end %>   
+                    </a>                    
+                    <a href="/market3/endIndex" class="menu_a">
+                        <% if @market3.status == false %>
+                            <div class="sub_menu_selected">
+                                    종료된 푸드트럭
+                            </div>        
+                        <% elsif @market3.status == true %>
+                            <div class="sub_menu">
+                                    종료된 푸드트럭
+                            </div>        
+                        <% end %>       
+                    </a>   
+
+                    <% if user_signed_in? %>
+                        <a href="/post/new"> <button class="status"> 새로운 게시물 작성 </button> </a>
+                    <% end %>
+                    <div class="weatherContainer">
+                        <img class="weatherFaceImg" src="/assets/weatherWhatFace.png"/> <br/>
+                        <span class="weatherFaceText">...오늘의 날씨를 찾는 중이에요!</span>
+                    </div>
+                    
+                    <div class="facilitiesContainer">
+                        <a href="/facilities">
+                                <img class="facilitiesFaceImg" src="/assets/hereboy.png"/> <br/>
+                                <span class="facilitiesFaceText">우리 학교 주변 편의시설을 알려드려요!</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <div class="header_left">
+                <a href="/main"> 
+                <img src="/assets/new_logo.png" class="boardOfLogo">
+            </img></a>
+                <div class="sub_header">
+                        <a href="/post/index" class="menu">
+                            축제정보 
+                        </a>
+                    <a href="/market2/playingIndex" class="menu">
+                                플리마켓 
+                        </a>
+                        <a href="/market3/playingIndex" class="menu_selected">
+                            푸드트럭 
+                        </a>
+                        <a href="/film/index" class="menu">
+                            축제영상 
+                        </a>
+                </div>
+            </div>
+    </div>
+
+    <!-- 햄버거 메뉴 구현 끝 -->
+
+    <!-- 이 쪽에 본문 내용이 들어갑니다 -->
+    <div class = "content">
+            <div class="left_side">
+            <h1 class="main_title"> <%= @market3.title %> 상점을 자세히 알려드릴게요 </h1>
+            <!-- 사진, 그리고 상점에 대한 내용을 구현 -->
+                <div class="show_content">
+                    <!-- 사진을 제외한 오른쪽 상점에 대한 내용을 구현 -->
+                    <img class="show_img" src="<%=@market3.avatar.url %>"/>
+                    <div class = "right_content">
+                        <button class="sub_title"><%= @market3.sub_title %></button>
+                        <button class="sub_title">
+                        <% if @market3.status == true %>
+                            진행중
+                        <% elsif @market3.status == false %>
+                            종료됨
+                        <% end %>
+                        </button>
+                        <p class="show_title"><%=@market3.title%></p> <br/>
+                        <p class="show_description"><%=@market3.content%></p>
+
+                        <button class="sub_title"><%= @market3.title %>의 상세 위치를 알려드려요</button>
+                        <div id="map" class="map" style="width:85%; height:450px; border-radius:20px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="right_side">
+                <div class="quickmenu">
+                    <a href="/market3/playingIndex" class="menu_a">
+                        <% if @market3.status == false %>
+                            <div class="sub_menu">
+                                    진행중인 푸드트럭
+                            </div>        
+                        <% elsif @market3.status == true %>
+                            <div class="sub_menu_selected">
+                                    진행중인 푸드트럭
+                            </div>        
+                        <% end %>   
+                    </a>
+
+                    <a href="/market3/endIndex" class="menu_a">
+                        <% if @market3.status == false %>
+                            <div class="sub_menu_selected">
+                                    종료된 푸드트럭
+                            </div>        
+                        <% elsif @market3.status == true %>
+                            <div class="sub_menu">
+                                    종료된 푸드트럭
+                            </div>        
+                        <% end %>      
+                    </a>                
+
+                    <% if user_signed_in? %>
+                        <form action="/market3/status_update/<%=@market3.id%>" method="post">
+                        <%= hidden_field_tag :authenticity_token, form_authenticity_token %> <!-- 인증토큰 -->
+                            <% if @market3.status == false %>
+                                <button type="submit" class="status" name="status" value="true"> 이벤트를 진행 상태로 변경 </button>
+                            <% elsif @market3.status == true %>
+                                <button type="submit" class="status" name="status" value="false"> 이벤트를 종료 상태로 변경 </button>
+                            <% end %>    
+                        </form>
+                        <a href="/market3/destroy/<%=@market3.id%>" onClick="return confirm('정말로 게시글을 삭제하시겠습니까?');"> <button class="status"> 이벤트를 삭제할게요 </button> </a>
+                        <a href="/market3/edit/<%=@market3.id%>"> <button class="status"> 이벤트를 수정할게요 </button> </a>
+                    <% end %>
+                        <div class="weatherContainer">
+                            <div class="weatherFace">
+                                <img class="weatherFaceImg" src="/assets/weatherWhatFace.png"/> <br/>
+                                <span class="weatherFaceText">...오늘의 날씨를 찾는 중이에요!</span>
+                            </div>
+                        </div>
+                        
+                        <div class="facilitiesContainer">
+                            <a href="/facilities">
+                                <div class="facilities">
+                                    <img class="facilitiesFaceImg" src="/assets/hereboy.png"/> <br/>
+                                    <span class="facilitiesFaceText">우리 학교 주변 편의시설을 알려드려요!</span>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+                <script>
+                    // 마커가 표시될 위치입니다 
+                    var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+                    var options = { //지도를 생성할 때 필요한 기본 옵션
+                        center: new kakao.maps.LatLng(<%=@market3.latitude%>, <%=@market3.longitude%>), //지도의 중심좌표.
+                        level: 3 //지도의 레벨(확대, 축소 정도)
+                    };
+                    var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+                    var markerPosition  = new kakao.maps.LatLng(<%=@market3.latitude%>, <%=@market3.longitude%>); 
+                    // 마커를 생성합니다
+                    var marker = new kakao.maps.Marker({
+                        position: markerPosition,
+                        clickable: true // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
+                        });
+
+                    // 마커가 지도 위에 표시되도록 설정합니다
+                    marker.setMap(map);
+
+                    // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
+                    var iwContent = '<div style="padding:10px;"> 이벤트가 여기에 위치해요!</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                        iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+                    // 인포윈도우를 생성합니다
+                    var infowindow = new kakao.maps.InfoWindow({
+                        content : iwContent,
+                        removable : iwRemoveable
+                    });
+
+                    // 마커에 클릭이벤트를 등록합니다
+                    kakao.maps.event.addListener(marker, 'click', function() {
+                        // 마커 위에 인포윈도우를 표시합니다
+                        infowindow.open(map, marker);  
+                    });
+                </script>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </form>
+    </body>
+
+</html>

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  sub_title: MyString
+  status: false
+  latitude: 1.5
+  longtitude: 1.5
+
+two:
+  title: MyString
+  sub_title: MyString
+  status: false
+  latitude: 1.5
+  longtitude: 1.5

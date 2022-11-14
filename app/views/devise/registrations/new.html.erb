@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="/assets/devise.css">
+
+<section>
+  <div class="container">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <div class="form-inputs">
+      <div class="boxOfEmail">
+      <% if current_user && current_user.has_role?(:admin) %>
+        <div class="title">관리자 회원가입</div>
+        <span>이메일</span> 
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    label: false,
+                    input_html: { autocomplete: "email" }%>
+      </div>
+      <div class="boxOfPassword">
+        <span>비밀번호 (6자 이상 입력)</span>
+        <%= f.input :password,
+                    required: true,
+                    label: false,
+                    hint: (t(' ', count: @minimum_password_length) if @minimum_password_length),
+                    input_html: { autocomplete: "new-password" } %>
+      </div>
+      <div class="boxOfPassword">
+        <span> 비밀번호 확인 </span>
+        <%= f.input :password_confirmation,
+                    required: true,
+                    label: false,
+                    input_html: { autocomplete: "new-password" } %>
+      </div>
+    </div>
+    
+    <div class="form-actions">
+      <div class="buttonOfSubmit">
+      <%= f.button :submit, t(".sign_up") %>
+      </div>
+    </div>
+    <a href="/users/sign_in" class="goToLogin"> 로그인을 하실건가요? </a>
+      <% end %>
+      <div class="containerOf404">
+        <img class="imgOf404" src="/assets/404_logo"/>
+        <span class="pageOf404">해당 페이지에 잘못된 접근을 하셨어요</span>
+      </div>
+    <% end %>
+  </div>
+</section>

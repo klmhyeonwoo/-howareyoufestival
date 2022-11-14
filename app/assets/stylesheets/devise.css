@@ -1,0 +1,201 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+.containerOf404 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgOf404 {
+    width: 120px;
+}
+
+.pageOf404 {
+    font-size: 16px;
+    white-space: nowrap;
+    font-family: 'Pretendard-Bold';
+}
+
+input {
+    font-family: 'Pretendard-Medium';
+    width: 380px;
+    height: 40px;
+    border: solid;
+    padding-left: 3px;
+    font-size: 13px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-color: gray;
+    border-width: 1px;
+}
+
+input:focus {
+    outline: none;
+}
+
+span {
+    font-size: 12px;
+    font-family: 'Pretendard-Medium';
+    float: left;
+}
+
+h3 {
+    font-size: 18px;
+    font-family: 'Pretendard-Bold';
+    float: left;
+}
+
+section {
+    position : absolute;
+    top : 50%;
+    left : 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.clearOfInput {
+    position: absolute;
+    width: 12px;
+    opacity: 80%;
+    margin-top: 32px;
+    margin-left: 360px;
+}
+
+.areaOfAlert {
+
+    position: absolute;
+    font-size: 15px;
+    bottom: 150px;
+    left: 50%;
+    padding: 15px 20px;
+    transform: translate(-50%, 10px);
+
+    z-index: -1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notice {
+    position: absolute;
+    width: 250px;
+    height: 55px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-family: 'Pretendard-Bold';
+    opacity: 40%;
+    font-size: 13px;
+}
+
+.title {
+    position: absolute;
+    font-size: 24px;
+    font-family: 'Pretendard-Bold';
+    margin-top: -60px;
+}
+
+.simple_form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.goToLogin {
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.error {
+    margin-top: 6px;
+    color: gray;
+}
+
+.translation_missing {
+    margin-top: 6px;
+    color: gray;
+}
+
+.form-inputs {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.checkOfRemember {
+    width: 100%;
+}
+
+.boxOfEmail, .boxOfPassword {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.logoOfLogin {
+    width: 400px;
+    margin-top: -250px;
+}
+
+.btn {
+    font-family: 'Pretendard-Bold';
+    width: 97%;
+    height: 50px;
+    border-radius: 8px;
+    background-color : #535353;
+    opacity: 100%;
+    margin-top: 0px;
+    transition: 0.4s all;
+    font-size: 17px;
+    color: white;
+}
+
+.btn:hover {
+    color: white;
+    opacity: 80%;
+}
+
+.buttonOfSubmit {
+    width: 400px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.whoSignup {
+    font-size: 13px;
+    color: gray;
+}
