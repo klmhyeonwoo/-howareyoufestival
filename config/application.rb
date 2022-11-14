@@ -13,7 +13,7 @@ module Festival
     config.i18n.default_locale = :ko
     config.time_zone = 'Seoul'
 
-    config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = true
     config.assets.digest = true
     config.serve_static_files = true
     
