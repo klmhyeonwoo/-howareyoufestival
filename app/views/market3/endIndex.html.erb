@@ -78,20 +78,22 @@
                     <div class="row row-cols-3">
                         <% if @market3s.ids.length >= 1 %>
                             <% @market3s.each do |x| %>
-                                <div class="col">
-                                    <a href="/market3/show/<%=x.id%>" class="target_link">
-                                        <img class="post_img" src="<%=x.avatar.url %>"/> <br/>
-                                        <button class="sub_title"><%= x.sub_title %></button>
-                                        <button class="sub_title">
-                                            <% if x.status == true %>
-                                                진행중
-                                            <% elsif x.status == false %>
-                                                종료됨
-                                            <% end %>
-                                        </button> <br/>
-                                        <p class ="title"> <%= x.title %> </p> <br/>
-                                    </a>
-                                </div> 
+                                <% if x.status == false %>
+                                    <div class="col">
+                                        <a href="/market3/show/<%=x.id%>" class="target_link">
+                                            <img class="post_img" src="<%=x.avatar.url %>"/> <br/>
+                                            <button class="sub_title"><%= x.sub_title %></button>
+                                            <button class="sub_title">
+                                                <% if x.status == true %>
+                                                    진행중
+                                                <% elsif x.status == false %>
+                                                    종료됨
+                                                <% end %>
+                                            </button> <br/>
+                                            <p class ="title"> <%= x.title %> </p> <br/>
+                                        </a>
+                                    </div> 
+                                <% end %>
                             <%end%>
                         <% else %>
                             <div class="noBoardContainer">
