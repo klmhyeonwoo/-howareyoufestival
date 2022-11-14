@@ -26,14 +26,11 @@
                                     업로드된 축제영상
                         </a> 
                     </div>
-                    <div class="sub_menu">
-                        <a href="/film/new">새로운 게시물 작성</a>
-                    </div>
-
 
                     <% if user_signed_in? %>
                         <a href="/post/new"> <button class="status"> 새로운 게시물 작성 </button> </a>
                     <% end %>
+
                     <div class="weatherContainer">
                         <img class="weatherFaceImg" src="/assets/weatherWhatFace.png"/> <br/>
                         <span class="weatherFaceText">...오늘의 날씨를 찾는 중이에요!</span>
@@ -88,7 +85,10 @@
                                     <button class="sub_title"> 수정 </button>
                                     <button class="sub_title"> 삭제 </button>  <br/>
                                     -->
-                                    <button class="sub_title"><%= x.sub_title %></button><br/>
+                                    <div class="filmBtn">
+                                        <button class="sub_title"><%= x.sub_title %></button><br/>
+                                        <a href="/film/destroy/<%=x.id%>" onClick="return confirm('정말로 게시글을 삭제하시겠습니까?');"> <button class="sub_title"> 이벤트를 삭제할게요 </button> </a>
+                                    </div>
                                     <p class ="title"> <%= x.title %> </p> <br/>
                                 </a>
                             </div> 
@@ -127,6 +127,7 @@
             <% if user_signed_in? %>
                 <a href="/film/new"> <button class="status"> 새로운 게시물 작성 </button> </a>
             <% end %>
+            
             <div class="weatherContainer">
                 <div class="weatherFace">
                     <img class="weatherFaceImg" src="/assets/weatherWhatFace.png"/> <br/>

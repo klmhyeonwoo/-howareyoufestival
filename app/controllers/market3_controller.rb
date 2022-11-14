@@ -1,10 +1,12 @@
 class Market3Controller < ApplicationController
     def playingIndex
-        @market3s = Market3.all.where(["status LIKE true", "%#{params[:status]}%"]).order("id DESC") #id를 내림차순으로 정렬
+      #@market3s = Market3.all.where(["status LIKE true", "%#{params[:status]}%"]).order("id DESC") # (기존 로직)
+       @market3s = Market3.all.order("id DESC") # (신규 로직, 뷰 화면에서 status 분류)  
       end
     
-      def endIndex
-        @market3s = Market3.all.where(["status LIKE false", "%#{params[:status]}%"]).order("id DESC") #id를 내림차순으로 정렬
+    def endIndex
+      #@market3s = Market3.all.where(["status LIKE false", "%#{params[:status]}%"]).order("id DESC") # (기존 로직)
+      @market3s = Market3.all.order("id DESC") # (신규 로직, 뷰 화면에서 status 분류)        
       end
     
       def new 
@@ -29,7 +31,7 @@ class Market3Controller < ApplicationController
         @market3 = Market3.find(params[:market3_id])
         @market3.destroy
     
-        redirect_to '/market3/playIndex'
+        redirect_to '/market3/playingIndex'
       end
     
       def edit
