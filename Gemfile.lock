@@ -298,7 +298,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jquery-rails
-  pg (~> 0.21)
+  pg (~> 0.20)
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.2, >= 7.0.2.3)
