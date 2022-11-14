@@ -31,7 +31,7 @@ class Market3Controller < ApplicationController
         @market3 = Market3.find(params[:market3_id])
         @market3.destroy
     
-        redirect_to '/market3/playing Index'
+        redirect_to '/market3/playingIndex'
       end
     
       def edit
