@@ -86,6 +86,12 @@ title {
         grid-template-columns: 1fr 1fr 1fr;
     }
 
+    .filmBtn {
+        display: flex;
+        column-gap: 4px;
+        margin-bottom: -20px;
+    }
+
     .textOfMenuBar {
         display: flex;
         flex-direction: column;
@@ -303,7 +309,7 @@ title {
         border-width: 1px;
         height: 50px;
         margin-bottom: 10px;
-        font-size: 12px;
+        font-size: 13px;
         transition: 0.6s all; 
         box-shadow: 5px 7px 8px 0.8px #383737;
     }
@@ -314,7 +320,7 @@ title {
             justify-content: center;
             align-items: center;
             width: 260px;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 700;
             font-family: 'Pretendard-Bold';
             border: none;
@@ -354,6 +360,8 @@ title {
         border-radius: 20px;
         margin-bottom: 20px;
         background-color: #535353;
+        padding-left: 40px;
+        padding-right: 40px;
         color: white;
         border-width: 2px;
         font-size: 12px;
@@ -430,6 +438,8 @@ title {
     .signoutAdmin {
         color: white;
         font-family: 'Pretendard-Bold';
+        font-size: 13px;
+
     }
 
 
@@ -719,6 +729,12 @@ title {
         margin-bottom: -13px;
     }
 
+    .filmBtn {
+        display: flex;
+        column-gap: 4px;
+        margin-bottom: -20px;
+    }
+
     .gridContainer {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -727,6 +743,12 @@ title {
     .textOfMenuBar {
         display: flex;
         flex-direction: column;
+    }
+
+    .filmBtn {
+        display: flex;
+        column-gap: 4px;
+        margin-bottom: -18px;
     }
 
     .weatherContainer, .facilitiesContainer {
@@ -878,6 +900,7 @@ title {
     .menu_a {
         color: black;
         text-decoration: none;
+        margin-bottom: 10px;
     }
 
     .menu_a:hover {
@@ -949,7 +972,7 @@ title {
         border-width: 1px;
         height: 50px;
         margin-bottom: 10px;
-        font-size: 12px;
+        font-size: 14px;
         transition: 0.6s all; 
         box-shadow: 5px 7px 8px 0.8px #383737;
     }
@@ -968,7 +991,7 @@ title {
             background-color: #535353;
             border-width: 2px;
             height: 50px;
-            margin-bottom: 10px;
+            font-size: 14px;
             color: white;
             box-shadow: 5px 7px 8px 0.8px #383737;
         }
@@ -999,6 +1022,8 @@ title {
         height: 60px;
         border-radius: 20px;
         margin-bottom: 20px;
+        padding-left: 40px;
+        padding-right: 40px;
         background-color: #535353;
         color: white;
         border-width: 2px;
@@ -1067,6 +1092,7 @@ title {
     .signoutAdmin {
         color: white;
         font-family: 'Pretendard-Bold';
+        font-size: 13px;
     }
 
 
@@ -1087,6 +1113,8 @@ title {
         background-color: #707070;
         color : white;
         border-radius: 5px 5px;
+        padding-left: 40px;
+        padding-right: 40px;
         margin-top: 6px;
         margin-bottom: 6px;
         font-size: 11px;
@@ -1351,6 +1379,11 @@ title {
 
 
 @media all and (min-width:1000px) and (max-width: 1400px) {
+
+    .filmBtn {
+        display: flex;
+        column-gap: 4px;
+    }    
 
     .hamburger {
         display: none;
@@ -1666,7 +1699,6 @@ title {
 
     .signoutAdmin {
         color: white;
-        font-size: 12px;
         font-family: 'Pretendard-Bold';
     }
 
@@ -1820,6 +1852,11 @@ title {
 }
 
 @media all and (min-width: 1400px) {
+
+    .filmBtn {
+        display: flex;
+        column-gap: 4px;
+    }    
 
     .hamburger {
         display: none;

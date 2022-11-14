@@ -12,6 +12,10 @@ module Festival
     config.load_defaults 7.0
     config.i18n.default_locale = :ko
     config.time_zone = 'Seoul'
+
+    config.assets.initialize_on_precompile = true
+    config.assets.digest = true
+    config.serve_static_files = true
     
     config.middleware.insert_before 0, Rack::Cors do
       allow do
