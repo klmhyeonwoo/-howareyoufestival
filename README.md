@@ -19,6 +19,6 @@
 - ##### 깃허브와 헤로쿠 브런치의 꼬임을 방지하기 위해서 한 브런치로 헤로쿠 커밋을 진행해요 🤔
 - ##### 헤로쿠에 커밋을 할 때는 `221114` 브런치로 주로 커밋해요 (그 외에는 코드관리를 위해 깃 플로우를 사용해요)
   - ##### git push heroku HEAD:main
-- ##### 배포된 홈페이지는 오른쪽 링크로 접속이 가능해요 : <a href="owareyoufestival.herokuapp.com">howareyoufestival web</a>
+- ##### 배포된 홈페이지는 오른쪽 링크로 접속이 가능해요 : <a href="https://howareyoufestival.herokuapp.com">howareyoufestival web</a>
 ##### 프로젝트는 이런 환경으로 만들어졌어요
 <img src="https://user-images.githubusercontent.com/19422885/201467830-e0318668-d782-4c57-9c2d-bc2588bbc7c4.png" style="width:700px"/>
