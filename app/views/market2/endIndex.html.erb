@@ -76,31 +76,31 @@
                 <div class="container">
                     <h1 class="main_title">우리 학교 플리마켓을 한번 살펴볼까요? </h1>
                     <div class="row row-cols-3">
-                    <% if @market2s.ids.length >= 1 %>
-                        <% @market2s.each do |x| %>
-                            <div class="col">
-                                <a href="/market2/show/<%=x.id%>" class="target_link">
-                                    <img class="post_img end-img" src="<%=x.avatar.url %>"/> <br/>
-                                    <button class="sub_title"><%= x.sub_title %></button>
-                                    <button class="sub_title">
-                                        <% if x.status == true %>
-                                            진행중
-                                        <% elsif x.status == false %>
-                                            종료됨
-                                        <% end %>
-                                    </button> <br/>
-                                    <p class ="title"> <%= x.title %> </p> <br/>
-                                </a>
-                            </div> 
+                        <% if @market2s.where(:status => false).length >= 1 %>
+                            <% @market2s.where(:status => false).each do |x| %>
+                                        <div class="col">
+                                            <a href="/market2/show/<%=x.id%>" class="target_link">
+                                                <img class="post_img end-img" src="<%=x.avatar.url %>"/> <br/>
+                                                <button class="sub_title"><%= x.sub_title %></button>
+                                                <button class="sub_title">
+                                                    <% if x.status == true %>
+                                                        진행중
+                                                    <% elsif x.status == false %>
+                                                        종료됨  
+                                                    <% end %>
+                                                </button> <br/>
+                                                <p class ="title"> <%= x.title %> </p> <br/>
+                                            </a>
+                                        </div> 
+                            <% end %>
+                            <% else %>
+                                <div class="noBoardContainer">
+                                    <div class="noBoard">
+                                        <img class="noBoardSign" src="/assets/noBoardSign.png"/> <br/>
+                                        <span class="noBoardText"> 아직 게시물이 존재하지 않아요! </span>
+                                    </div>
+                                </div>
                         <% end %>
-                    <% else %>
-                        <div class="noBoardContainer">
-                            <div class="noBoard">
-                                <img class="noBoardSign" src="/assets/noBoardSign.png"/> <br/>
-                                <span class="noBoardText"> 아직 게시물이 존재하지 않아요! </span>
-                            </div>
-                        </div>
-                    <% end %>
                     </div>
                 </div>
         </div>

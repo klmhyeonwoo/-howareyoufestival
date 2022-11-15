@@ -75,7 +75,7 @@
     <div class = "content">
             <div class="left_side">
             <div class="container">
-            <h1 class="main_title"> <%= @plan.title %> 상점을 자세히 알려드릴게요 </h1>
+            <h1 class="main_title"> <%= @plan.title %> 이벤트를 자세히 알려드릴게요 </h1>
             <!-- 사진, 그리고 상점에 대한 내용을 구현 -->
                 <div class="show_content">
                     <!-- 사진을 제외한 오른쪽 상점에 대한 내용을 구현 -->
@@ -138,6 +138,7 @@
                             <% elsif @plan.status == true %>
                                 <button type="submit" class="status" name="status" value="false"> 이벤트를 종료 상태로 변경 </button>
                             <% end %>    
+                        </form>
                         <a href="/plan/destroy/<%=@plan.id%>" onClick="return confirm('정말로 게시글을 삭제하시겠습니까?');"> <button class="status"> 이벤트를 삭제할게요 </button> </a>
                         <a href="/plan/edit/<%=@plan.id%>"> <button class="status"> 이벤트를 수정할게요 </button> </a>
                     <% end %>

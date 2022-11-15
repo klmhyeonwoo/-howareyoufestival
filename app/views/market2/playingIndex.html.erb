@@ -21,10 +21,10 @@
                             하단의 메뉴를 통해<br/>세부 카테고리를 볼 수 있어요!
                         <%end%>
                     </div>
-                    <div class="sub_menu_selected">
+                    <div class="sub_menu">
                         <a href="/market2/playingIndex" class="menu_a"> 진행중인 플리마켓 </a>
                     </div>
-                    <div class="sub_menu">
+                    <div class="sub_menu_selected">
                         <a href="/market2/endIndex" class="menu_a"> 종료된 플리마켓 </a>   
                     </div>  
 
@@ -76,37 +76,36 @@
                 <div class="container">
                     <h1 class="main_title">우리 학교 플리마켓을 한번 살펴볼까요? </h1>
                     <div class="row row-cols-3">
-                    <% if @market2s.ids.length >= 1 %>
-                        <% @market2s.each do |x| %>
-                            <% if x.status == true %>
-                            <div class="col">
-                                <a href="/market2/show/<%=x.id%>" class="target_link">
-                                    <img class="post_img" src="<%=x.avatar.url %>"/> <br/>
-                                    <button class="sub_title"><%= x.sub_title %></button>
-                                    <button class="sub_title">
-                                        <% if x.status == true %>
-                                            진행중
-                                        <% elsif x.status == false %>
-                                            종료됨
-                                        <% end %>
-                                    </button> <br/>
-                                    <p class ="title"> <%= x.title %> </p> <br/>
-                                </a>
-                            </div> 
+                        <% if @market2s.where(:status => true).length >= 1 %>
+                            <% @market2s.where(:status => true).each do |x| %>
+                                        <div class="col">
+                                            <a href="/market2/show/<%=x.id%>" class="target_link">
+                                                <img class="post_img end-img" src="<%=x.avatar.url %>"/> <br/>
+                                                <button class="sub_title"><%= x.sub_title %></button>
+                                                <button class="sub_title">
+                                                    <% if x.status == true %>
+                                                        진행중
+                                                    <% elsif x.status == false %>
+                                                        종료됨  
+                                                    <% end %>
+                                                </button> <br/>
+                                                <p class ="title"> <%= x.title %> </p> <br/>
+                                            </a>
+                                        </div> 
                             <% end %>
+                            <% else %>
+                                <div class="noBoardContainer">
+                                    <div class="noBoard">
+                                        <img class="noBoardSign" src="/assets/noBoardSign.png"/> <br/>
+                                        <span class="noBoardText"> 아직 게시물이 존재하지 않아요! </span>
+                                    </div>
+                                </div>
                         <% end %>
-                    <% else %>
-                        <div class="noBoardContainer">
-                            <div class="noBoard">
-                                <img class="noBoardSign" src="/assets/noBoardSign.png"/> <br/>
-                                <span class="noBoardText"> 아직 게시물이 존재하지 않아요! </span>
-                            </div>
-                        </div>
-                    <% end %>
                     </div>
                 </div>
         </div>
         <div class="right_side">
+        
 
         <div class="quickmenu">
 
@@ -131,7 +130,7 @@
                 <div class="sub_menu">
                         종료된 플리마켓
                 </div>          
-            </a>             
+            </a>                
 
             <% if user_signed_in? %>
                 <a href="/market2/new"> <button class="status"> 새로운 게시물 작성 </button> </a>
