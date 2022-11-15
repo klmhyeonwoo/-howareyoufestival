@@ -243,7 +243,8 @@
   }
   
   .show_img {
-    width : 40%;
+    width : 45%;
+    height: 100%;
   }
   
   .mainBtn:hover {
@@ -367,6 +368,7 @@
   
   .show_img {
     width : 40%;
+    height: 100%;
   }
   
   .mainBtn:hover {
