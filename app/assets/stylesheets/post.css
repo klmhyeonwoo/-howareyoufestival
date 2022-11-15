@@ -1380,6 +1380,10 @@ title {
 
 @media all and (min-width:1000px) and (max-width: 1400px) {
 
+    .row {
+        row-gap: 30px;
+    }
+
     .filmBtn {
         display: flex;
         column-gap: 4px;
@@ -1852,6 +1856,10 @@ title {
 }
 
 @media all and (min-width: 1400px) {
+
+    .row {
+        row-gap: 30px;
+    }
 
     .filmBtn {
         display: flex;
