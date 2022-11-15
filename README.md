@@ -13,7 +13,7 @@
 - ##### gem 'devise' - Ruby on Rails 회원가입 기능 구현을 위한 gem
 - ##### gem 'devise-i18n'- 영문으로 되어진 devise gem 라이브러리의 번역을 도와주는 gem
 - ##### gem "rails_db" - 데이터베이스 스키마를 확인하기 위한 gem
-- ##### gem 'jquery-rails' - 퀵 메뉴 구현을 위해 jquery 문법을 사용하기 위한 gem
+- ##### gem 'jquery-rails' - 퀵 메뉴 및 햄버거 바 구현, jquery 문법을 사용하기 위한 gem
 - ##### ... 그 밖에 scaffold를 사용하여 게시물을 구현하였어요
 ##### 배포는 다음과 같이 진행을 해요
 - ##### 깃허브와 헤로쿠 브런치의 꼬임을 방지하기 위해서 한 브런치로 헤로쿠 커밋을 진행해요 🤔
