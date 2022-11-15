@@ -22,10 +22,14 @@
                         <%end%>
                     </div>
                     <div class="sub_menu">
-                        <a href="/market3/playingIndex" class="menu_a"> 진행중인 플리마켓 </a>
+                        <div class="sub_menu">
+                            <a href="/market3/playingIndex" class="menu_a"> 진행중인 플리마켓 </a>
+                        </div>
                     </div>
                     <div class="sub_menu_selected">
+                        <div class="sub_menu">
                         <a href="/market3/endIndex" class="menu_a"> 종료된 플리마켓 </a>   
+                        </div>
                     </div>  
 
                     <% if user_signed_in? %>
@@ -76,24 +80,22 @@
                 <div class="container">
                     <h1 class="main_title">우리 학교 푸드트럭을 한번 살펴볼까요? </h1>
                     <div class="row row-cols-3">
-                        <% if @market3s.ids.length >= 1 %>
-                            <% @market3s.each do |x| %>
-                                <% if x.status == false %>
-                                <div class="col">
-                                    <a href="/market3/show/<%=x.id%>" class="target_link">
-                                        <img class="post_img" src="<%=x.avatar.url %>"/> <br/>
-                                        <button class="sub_title"><%= x.sub_title %></button>
-                                        <button class="sub_title">
-                                            <% if x.status == true %>
-                                                진행중
-                                            <% elsif x.status == false %>
-                                                종료됨
-                                            <% end %>
-                                        </button> <br/>
-                                        <p class ="title"> <%= x.title %> </p> <br/>
-                                    </a>
-                                </div> 
-                                <%end%>
+                        <% if @market3s.where(:status => false).length >= 1 %>
+                            <% @market3s.where(:status => false).each do |x| %>
+                                    <div class="col">
+                                        <a href="/market3/show/<%=x.id%>" class="target_link">
+                                            <img class="post_img" src="<%=x.avatar.url %>"/> <br/>
+                                            <button class="sub_title"><%= x.sub_title %></button>
+                                            <button class="sub_title">
+                                                <% if x.status == true %>
+                                                    진행중
+                                                <% elsif x.status == false %>
+                                                    종료됨
+                                                <% end %>
+                                            </button> <br/>
+                                            <p class ="title"> <%= x.title %> </p> <br/>
+                                        </a>
+                                    </div> 
                             <%end%>
                         <% else %>
                             <div class="noBoardContainer">

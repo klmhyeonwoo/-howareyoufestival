@@ -82,33 +82,19 @@
                     <% if @plans.ids.length >= 1 %>
                         <% @plans.each do |x| %>
                             <div class="col">
-                                <% if x.status == true %>
-                                    <a href="/plan/show/<%=x.id%>" class="target_link">
-                                        <img class="post_img" src="<%=x.avatar.url %>"/> <br/>
-                                        <button class="sub_title"><%= x.sub_title %></button>
-                                        <button class="sub_title">
-                                            <% if x.status == true %>
-                                                진행중
-                                            <% elsif x.status == false %>
-                                                종료됨
-                                            <% end %>
-                                        </button> <br/>
-                                        <p class ="title"> <%= x.title %> </p> <br/>
-                                    </a>
-                                <% elsif x.status == false %>
-                                    <a href="/plan/show/<%=x.id%>" class="target_link">
-                                        <img class="post_img end-img" src="<%=x.avatar.url %>"/> <br/>
-                                        <button class="sub_title"><%= x.sub_title %></button>
-                                        <button class="sub_title">
-                                            <% if x.status == true %>
-                                                진행중
-                                            <% elsif x.status == false %>
-                                                종료됨
-                                            <% end %>
-                                        </button> <br/>
-                                        <p class ="title"> <%= x.title %> </p> <br/>
-                                    </a>
-                                <% end %>
+                                <a href="/plan/show/<%=x.id%>" class="target_link">
+                                    <img class="post_img" src="<%=x.avatar.url %>"/> <br/>
+                                    <button class="sub_title"><%= x.sub_title %></button>
+                                    <button class="sub_title">
+                                        <% if x.status == true %>
+                                            진행중
+                                        <% elsif x.status == false %>
+                                            종료됨
+                                        <% end %>
+                                    </button> <br/>
+                                    <p class ="title"> <%= x.title %> </p> <br/>
+                                </a>
+
                             </div> 
                         <% end %>
                     <% else %>
